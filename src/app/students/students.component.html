@@ -1,0 +1,48 @@
+<div class="container">
+    <h3>الطلاب المسجّلين في المدرسة:</h3>
+    <hr>
+    <div class="table-responsive">
+        <div *ngFor="let item of service.studentProfiles" class="p-3 bg-light bg-gradient shadow-lg border border-warning rounded-3">
+
+
+<table class="table table-bordered table-hover mb-0">
+    <thead class="bg-success text-light">
+        <th>id</th>
+        <th>اسم الطالب</th>
+        <th>الصف</th>
+        <th style="width: 25%;" class="text-center">الخيارات</th>
+    </thead>
+    <tbody>
+        <tr >
+            <td>{{ind+1}}</td>
+            <td>{{item.fullname}}</td>
+            <td>{{item.studyClass}}</td>
+            <td class="text-center"><a [routerLink]="['/studentInfo']" [queryParams]="{id: item.id}" class="btn btn-outline-danger">ملف الطالب</a> | <a [routerLink]="['/editMark']" [queryParams]="{id: item.id,name:item.fullname}" class="btn btn-outline-info">تعديل العلامات</a></td>
+        </tr>
+       </tbody>
+    </table>
+            <table class="table table-bordered">
+                <caption>علامات الطالب</caption>
+                <tr class="bg-info">
+                    <th>المواد</th>
+                    <th class="text-center">اللغة العربية</th>
+                    <th class="text-center">الرياضيات</th>
+                    <th class="text-center">التاريخ</th>
+                    <th class="text-center">الجغرافيا</th>
+                    <th class="text-center">التربية الإسلامية</th>
+                    <th class="text-center">الفنون</th>
+                </tr>
+                <tr class="bg-light">
+                    <td>العلامات (على مئة)</td>
+                    <td class="text-center">{{item.arabic}}</td>
+                    <td class="text-center">{{item.math}}</td>
+                    <td class="text-center">{{item.history}}</td>
+                    <td class="text-center">{{item.geographic}}</td>
+                    <td class="text-center">{{item.islamic}}</td>
+                    <td class="text-center">{{item.arts}}</td>
+                </tr>
+            </table>
+        </div>
+
+</div>
+</div>

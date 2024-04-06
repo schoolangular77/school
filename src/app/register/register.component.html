@@ -1,0 +1,460 @@
+<div style="width: 100%; background-color: #f2f3f6">
+  <h4 class="px-3 pt-5 text-center">استماراة التحاق طالب/طالبة مستجدّة</h4>
+
+  <div class="container">
+    <h5 style="padding: 20px 0px; line-height: 2rem">
+      نود أن نتقدّم لكم بالشكر والتقدير على ثقتكم واختياركم مدارس المستقبل
+      الذهبي لبناء مستقبل أبنائكم وبناتكم.<br />
+      وللبدء في التقديم للالتحاق بمدارسنا، يُطلب من أولياء الأمور تعبئة النموذج:
+    </h5>
+    <div  *ngIf="isError; then errorTemplate"></div>
+    <div  *ngIf="isGet; then formTemplate else successReg"></div>
+    <ng-template #errorTemplate>
+      <div><h3 onclick="hidethis(this)" style="position: fixed;
+        bottom: 10px;
+        left: 10px;
+        z-index: 10;
+        box-shadow: 0pc 3px 30px #c9c9c9;" class="text-center alert alert-danger">عذراً لم تنجح عملية التسجيل<br>الرجاء إعادة المحاولة</h3></div>
+      <script>window.scrollTo(top)</script>
+  </ng-template>
+    <ng-template #successReg>
+        <div><h1 class="text-center alert alert-success">تمّت عملية التسجيل بالنجاح<br>سيتم مراجعة بيانات الطالب والتواصل معكم في أقرب وقتت ممكن.</h1></div>
+    </ng-template>
+    <ng-template #formTemplate>
+    <form ngForm="form" (submit)="submit()" enctype="multipart/form-data">
+      <div class="py-3 px-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <div>
+          <div><label style="color: #202e39">رقم الهوية/الإقامة:</label></div>
+          <div class="py-2">
+            <input class="form-control" [(ngModel)]="service.student.nationalID" name="nationalID" type="text" style="
+              color: #b7b7b7;
+              border-color: #f2f3f6;
+              background-color: #ffffff;
+              margin-bottom: 0;
+              box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1),
+                0 1px 4px 0 rgba(0, 0, 0, 0.07) inset;
+            " />
+          </div>
+        </div>
+        <!-- ---------------------------------------- -->
+        <div class="mt-3">
+          <div>
+            <label style="color: #202e39">من فضلك ارفق صورة الهوية / الإقامة</label>
+          </div>
+          <div class="py-2 text-center">
+            <label for="imgg" style="
+              color: #fff;
+              border-color: #f2f3f6;
+              background-color: #202e39;
+              padding: 10px;
+              border-radius: 5px;
+              cursor: pointer;
+            ">حدد ملف</label>
+            <input class="form-control" id="imgg" type="file"
+            (change)="handleFileInput($any($event.target).files)"
+            style="
+            display: none;
+              color: #b7b7b7;
+              border-color: #f2f3f6;
+              background-color: #ffffff;
+              margin-bottom: 0;
+              box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1),
+                0 1px 4px 0 rgba(0, 0, 0, 0.07) inset;
+            " />
+            <div *ngIf="display;then show">
+
+            </div>
+            <ng-template #show>
+              <img src="{{base64}}" alt="" width="200" height="200" style="margin-right: 10%;"/>
+            </ng-template>
+            
+          </div>
+        </div>
+        <!-- ---------------------------------------- -->
+        <div class="mt-3">
+          <div>
+            <label style="color: #202e39">اسم الطالب/ة كاملاً من واقع كارت العائلة أو شهادة الميلاد:</label>
+          </div>
+          <div class="py-2">
+            <input class="form-control" [(ngModel)]="service.student.fullname" name="fullname" type="text" style="
+              color: #b7b7b7;
+              border-color: #f2f3f6;
+              background-color: #ffffff;
+              margin-bottom: 0;
+              box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1),
+                0 1px 4px 0 rgba(0, 0, 0, 0.07) inset;
+            " />
+          </div>
+        </div>
+      </div>
+
+      <!-- ############################################################### -->
+      <div class="py-3 px-5 mt-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <div style="display: flex; justify-content: space-around">
+          <div>
+            <div><label>العام الدراسي</label></div>
+            <div><input type="text" class="form-control" [(ngModel)]="service.student.studyYear" placeholder="1441 هـ"
+                name="studyYear" /></div>
+          </div>
+          <div>
+            <div><label>الصف الدراسي</label></div>
+            <div><input type="text" class="form-control" [(ngModel)]="service.student.studyClass" name="studyClass" />
+            </div>
+          </div>
+          <div>
+            <div><label>الفصل</label></div>
+            <div><input type="text" class="form-control" [(ngModel)]="service.student.studySession"
+                name="studySession" /></div>
+          </div>
+          <div>
+            <div><label>جنسية الطالب/ة</label></div>
+            <div><input type="text" class="form-control" [(ngModel)]="service.student.nationality" name="nationality" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############################################################### -->
+      <div class="py-3 px-5 mt-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <div style="display: flex; justify-content: space-around">
+          <div style="width: 30%">
+            <h4 style="color: #202e39">بيانات عن ميلاد الطالب/ة</h4>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="هجري" [(ngModel)]="service.student.hBirthdate"
+                name="hBirthdate" />
+            </div>
+            <div class="mt-2">
+              <input type="date" class="form-control" placeholder="ميلادي" [(ngModel)]="service.student.mBirthdate"
+                name="mBirthdate" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="دولة الميلاد"
+                [(ngModel)]="service.student.birthNation" name="birthNation" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="مكان الميلاد"
+                 />
+            </div>
+            <div class="mt-2">
+              <span style="font-size: 15px">هل التحق برياض الأطفال</span><select
+                [(ngModel)]="service.student.kindgarten" name="kindgarten" style="
+                border-radius: 2.357rem;
+                padding: 5px;
+                margin-right: 5px;
+                width: 30%;
+              ">
+                <option selected value="true">نعم</option>
+                <option value="false">لا</option>
+              </select>
+            </div>
+          </div>
+          <div style="width: 30%">
+            <h4 style="color: #202e39">بيانات عن هوية الطالب/ة</h4>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="نوع الهوية" [(ngModel)]="service.student.idenType"
+                name="idenType" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="رقم الهوية" [(ngModel)]="service.student.idenNumber"
+                name="idenNumber" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="مصدرها" [(ngModel)]="service.student.idenSource"
+                name="idenSource" />
+            </div>
+            <div class="mt-2">
+              <input type="date" class="form-control" placeholder="تاريخها" [(ngModel)]="service.student.idenDate"
+                name="idenDate" />
+            </div>
+            <div class="mt-2">
+              <input type="date" class="form-control" placeholder="تاريخ الإنتهاء"
+                [(ngModel)]="service.student.idenExpireDate" name="idenExpireDate" />
+            </div>
+          </div>
+          <div style="width: 30%">
+            <h4 style="color: #202e39">بيانات عن هوية الطالب/ة</h4>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="المدرسة ( المنقول ) منها الطالبة"
+                [(ngModel)]="service.student.fromSchool" name="fromSchool" />
+            </div>
+            <div class="mt-2">
+              <input type="date" class="form-control" placeholder="تاريخ (النقل)"
+                [(ngModel)]="service.student.transferDate" name="transferDate" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="حالة الطالب"
+                [(ngModel)]="service.student.studentStatus" name="studentStatus" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="تاريخها" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="تاريخ الإنتهاء" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############################################################### -->
+      <div class="py-3 px-5 mt-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <h4 style="color: #202e39; text-align: center">
+          بيانات ولي أمر الطالب / ة
+        </h4>
+        <div style="display: flex; justify-content: space-around">
+          <div style="width: 47%">
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="الأسم كامل"
+                [(ngModel)]="service.student.parentFullname" name="parentFullname" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="ًصلة القرابة"
+                [(ngModel)]="service.student.relativeType" name="relativeType" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="الجنسية" [(ngModel)]="service.student.parentNation"
+                name="parentNation" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="جنسية أم الطالب/ة"
+                [(ngModel)]="service.student.motherNation" name="motherNation" />
+            </div>
+          </div>
+          <div style="width: 47%">
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="نوع الهوية"
+                [(ngModel)]="service.student.parentIdenType" name="parentIdenType" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="رقم الهوية"
+                [(ngModel)]="service.student.parentIdenNumber" name="parentIdenNumber" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="مصدرها"
+                [(ngModel)]="service.student.parentIdenSource" name="parentIdenSource" />
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="تاريخ الإنتهاء"
+                [(ngModel)]="service.student.parentIdenExpir" name="parentIdenExpir" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############################################################### -->
+      <div class="py-3 px-5 mt-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <h4 style="color: #202e39; text-align: center">عنوان ولي الأمر</h4>
+        <div style="display: flex; justify-content: space-around">
+          <div style="width: 47%">
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="المدينة" [(ngModel)]="service.student.parentCity"
+                name="parentCity" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="الجوال" [(ngModel)]="service.student.parentPhone"
+                name="parentPhone" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="عنوان العمل"
+                [(ngModel)]="service.student.parentJopAddress" name="parentJopAddress" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="اسم قريب للطالب"
+                [(ngModel)]="service.student.relativename" name="relativename" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="اسم الأم" [(ngModel)]="service.student.mothername"
+                name="mothername" />
+            </div>
+            <div class="mt-3">
+              <label>ربّة منزل</label><select style="
+                border-radius: 2.357rem;
+                padding: 5px;
+                margin-right: 5px;
+                width: 30%;
+              " [(ngModel)]="service.student.housewife" name="housewife">
+                <option value="نعم" selected>نعم</option>
+                <option value="لا">لا</option>
+              </select>
+            </div>
+          </div>
+          <div style="width: 47%">
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="الحي" [(ngModel)]="service.student.parentStreet"
+                name="parentStreet" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="الإيميل" [(ngModel)]="service.student.parentEmail"
+                name="parentEmail" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="هاتف العمل"
+                [(ngModel)]="service.student.parentJobPhone" name="parentJobPhone" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="جوال" [(ngModel)]="service.student.relativePhone"
+                name="relativePhone" />
+            </div>
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="جوال" [(ngModel)]="service.student.motherPhone"
+                name="motherPhone" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############################################################### -->
+      <div class="py-3 px-5 mt-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <h4 style="color: #202e39; text-align: center">عنوان سكن الطالب/ة</h4>
+        <div style="display: flex; justify-content: space-around">
+          <div style="width: 97%">
+            <div class="mt-3">
+              <select type="text" class="form-control" [(ngModel)]="service.student.studentAddress"
+                name="studentAddress">
+                <option value="مع الوالدين" selected>مع الوالدين</option>
+                <option value="مع الأب">مع الأب</option>
+                <option value="مع الأم">مع الأم</option>
+                <option value="غير ذلك">غير ذلك</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############################################################### -->
+      <div class="py-3 px-5 mt-5" style="
+        border: 1px solid #202e39;
+        border-radius: 10px;
+        background-color: #eee !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      ">
+        <h4 style="color: #202e39; text-align: center">تعهد ولي أمر الطالب/ة</h4>
+        <input type="checkbox" /><label style="margin-right: 5px">أتعهد أنا ولي أمر الطالب/ة الموضح بياناته أعلاه بما
+          يلي :</label>
+        <div style="display: flex; justify-content: space-around">
+          <div style="width: 47%">
+            <div class="mt-3">
+              <strong class="form-control">1- ملاحظة سلوك ابني /ابنتي والعمل على حُسن مواظبته .</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">3- إشعار المدرسة في حالة غياب ابني/ابنتي وذكر الأسباب .</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">5- ملاحظة مذكرة الواجبات اليومية والتوقيع عليها.</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">7- عدم وجود أي امراض او طيف توحد .</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">9- أن جميع المعلومات المذكورة أعلاه صحيحة ، وعلى ذلك جرى
+                التوقيع.</strong>
+            </div>
+            <div class="mt-2">
+              <input type="text" class="form-control" placeholder="اسم ولي أمر الطالب/ة :" />
+            </div>
+            <div class="mt-3" style="display: flex; justify-content: space-between">
+              <div class="mt-2">
+                <input type="text" class="form-control" placeholder="التاريح الهجري" />
+              </div>
+              <div class="mt-2">
+                <input type="date" class="form-control" placeholder="التاريخ الميلادي" />
+              </div>
+            </div>
+          </div>
+          <div style="width: 47%">
+            <div class="mt-3">
+              <strong class="form-control">2- مراجعة المدرسة بصفة دورية وخاصة عند الطلب .</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">4-متابعة تقرير مستوى ابني/ ابنتي والتوقيع عليها بشكل
+                دوري.</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">6- أن أتحمل أي تقصير مني وأكون مسئولاً عنه .</strong>
+            </div>
+            <div class="mt-3">
+              <strong class="form-control">8- اطلعت علي محتوي الدليل الاجرائي لقواعد السلوك
+                والمواظبة.</strong>
+            </div>
+            <input type="hidden" name="imageID" [(ngModel)]="service.student.imageID" value="imageID" />
+            <div class="mt-3">
+              <input type="text" class="form-control" style="border:1px solid red" placeholder="كلمة سر حساب ولي الأمر"
+                [(ngModel)]="service.student.password" name="password" />
+            </div>
+            <div class="mt-3">
+              <strong>حيث يتم الدخول إلى الحساب عبر الإيميل وكلمة السر</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="submit" value="إرسال" style="
+        width: 5rem;
+        margin: 20px 0px;
+        padding: 10px;
+        color: white;
+        background-color: #202e39;
+      " />
+
+      <h4 class="text-center my-3">
+        نتطلع لمراجعة طلبات تقديم أبنائكم وبناتكم، متمنين لهم دوام التوفيق
+        والنجاح.
+        <br />
+        فريق القبول والتسجيل
+      </h4>
+    </form>
+  </ng-template>
+
+  </div>
+
+  <div style="
+      text-align: center;
+      width: 100%;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-color: #1f2024;
+      border-color: #1c1b1f;
+      color: #ffffff;
+    ">
+    <h2 style="padding: 20px; text-align: center; margin-bottom: 0">
+      جميع الحقوق محفوظة مدرسة المستقبل الذهبي
+    </h2>
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+
+<div style="background-color: #eee;">
+<h1 id="hintst">لمحة عن الطالب:</h1>
+<div class="container">
+    <div class="row p-4" id="studentProfile">
+        <div class="col-md-3">
+            <img [src]="'data:image/png;base64,'+service.studentProfile.image" style="width: 100%;"/> 
+        </div>
+        <div class="col-md-9">
+            <h3 class="mt-3">اسم الطالب: {{service.studentProfile.fullname}}</h3>
+            <h3 class="mt-4">ولد في : {{service.studentProfile.birthdate}}</h3>
+            <h3 class="mt-4">الصف: {{service.studentProfile.studyClass}}</h3>
+            <h3 class="mt-4">الجنسية: {{service.studentProfile.nationality}}</h3>
+        </div>
+    </div>
+
+    <div class="py-4">
+        <h4>علامات الطالب:</h4>
+        <table class="table table-bordered mt-4">
+            <tr class="bg-info">
+                <th>المواد</th>
+                <th class="text-center">اللغة العربية</th>
+                <th class="text-center">الرياضيات</th>
+                <th class="text-center">التاريخ</th>
+                <th class="text-center">الجغرافيا</th>
+                <th class="text-center">التربية الإسلامية</th>
+                <th class="text-center">الفنون</th>
+            </tr>
+            <tr>
+                <td>العلامات (على مئة)</td>
+                <td class="text-center">{{service.studentProfile.arabic}}</td>
+                <td class="text-center">{{service.studentProfile.math}}</td>
+                <td class="text-center">{{service.studentProfile.history}}</td>
+                <td class="text-center">{{service.studentProfile.geographic}}</td>
+                <td class="text-center">{{service.studentProfile.islamic}}</td>
+                <td class="text-center">{{service.studentProfile.arts}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>

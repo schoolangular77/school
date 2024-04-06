@@ -1,0 +1,28 @@
+*{
+  direction: rtl;
+}
+#slider .carousel-item {
+    height: 500px;
+  }
+  
+  .carousel-caption {
+    font-size: 18px;
+  }
+  
+  .carousel-item>img {
+    width: 100%
+  }
+
+  .hovstage{
+    perspective: 320px;
+    position: relative;
+  }
+
+  .hovstage div{
+    perspective: 320px;
+    position: relative;
+     transition-duration: 0.7s;
+     transition-timing-function: ease-in-out;
+  }
+
+ 

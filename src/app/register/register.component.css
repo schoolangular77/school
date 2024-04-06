@@ -1,0 +1,20 @@
+*{
+    direction: rtl;
+}
+
+
+input[type="text"]{
+    color: #b7b7b7;
+              border-color: #f2f3f6;
+              background-color: #ffffff;
+              margin-bottom: 0;
+              box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1),
+                0 1px 4px 0 rgba(0, 0, 0, 0.07) inset;
+}
+
+
+
+input[type="text"]:focus,
+input[type="text"]:hover{
+    border-color: #202e39 !important; 
+}

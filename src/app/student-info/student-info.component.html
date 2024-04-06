@@ -1,0 +1,138 @@
+
+<div style="background-color: #eee;">
+    <h1 id="hintst">معلومات الطالب:</h1>
+    <div class="container" style="position: relative;">
+        
+        <div style="position: absolute;top:20px;left:20px"><img [src]="'data:image/png;base64,'+service.image" style="width: 400px"/></div>
+        <div class="row p-4 rounded shadow-lg" id="studentProfile">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 row">
+                <div class="col-md-3"><p>اسم الطالب</p></div>
+                <div class="col-md-9"><p>{{service.student.fullname}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>رقم الهوية/الإقامة:</p></div>
+                <div class="col-md-9"><p>{{service.student.nationalID}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>العام الدراسي</p></div>
+                <div class="col-md-9"><p>{{service.student.studyYear}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>الصف الدراسي</p></div>
+                <div class="col-md-9"><p>{{service.student.studyClass}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>الفصل</p></div>
+                <div class="col-md-9"><p>{{service.student.studySession}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>جنسية الطالب/ة</p></div>
+                <div class="col-md-9"><p>{{service.student.nationality}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>تاريخ الميلاد الهجري</p></div>
+                <div class="col-md-9"><p>{{service.student.hBirthdate}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>تاريخ الميلاد</p></div>
+                <div class="col-md-9"><p>{{service.student.mBirthdate}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>دولة الميلاد</p></div>
+                <div class="col-md-9"><p>{{service.student.birthNation}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>هل التحق بروضة؟</p></div>
+                <div class="col-md-9"><p>{{service.student.kindgarten}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>نوع الهوية</p></div>
+                <div class="col-md-9"><p>{{service.student.idenType}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>رقم الهوية</p></div>
+                <div class="col-md-9"><p>{{service.student.idenNumber}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>مصدر الهوية</p></div>
+                <div class="col-md-9"><p>{{service.student.idenSource}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>تاريخ الإصدار</p></div>
+                <div class="col-md-9"><p>{{service.student.idenDate}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>تاريخ الصلاحية</p></div>
+                <div class="col-md-9"><p>{{service.student.idenExpireDate}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>المدرسة المنقول منها</p></div>
+                <div class="col-md-9"><p>{{service.student.fromSchool}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>تاريخ الانتقال</p></div>
+                <div class="col-md-9"><p>{{service.student.transferDate}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>حالة الطالب</p></div>
+                <div class="col-md-9"><p>{{service.student.studentStatus}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>ولي الأمر</p></div>
+                <div class="col-md-9"><p>{{service.student.parentFullname}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>صلة القرابة</p></div>
+                <div class="col-md-9"><p>{{service.student.relativeType}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>جنسيته</p></div>
+                <div class="col-md-9"><p>{{service.student.parentNation}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>جنسية أم الطالب</p></div>
+                <div class="col-md-9"><p>{{service.student.motherNation}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>نوع هوية ولي الأمر</p></div>
+                <div class="col-md-9"><p>{{service.student.parentIdenType}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>رقم هوية ولي الأمر</p></div>
+                <div class="col-md-9"><p>{{service.student.parentIdenNumber}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>مصدر هوية ولي الأمر</p></div>
+                <div class="col-md-9"><p>{{service.student.parentIdenSource}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>تاريخ الإنتهاء</p></div>
+                <div class="col-md-9"><p>{{service.student.parentIdenExpir}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>مدينة ولي الأمر</p></div>
+                <div class="col-md-9"><p>{{service.student.parentCity}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>الحي</p></div>
+                <div class="col-md-9"><p>{{service.student.parentStreet}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>جوال</p></div>
+                <div class="col-md-9"><p>{{service.student.parentPhone}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>إيميل</p></div>
+                <div class="col-md-9"><p>{{service.student.parentEmail}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>عنوان العمل</p></div>
+                <div class="col-md-9"><p>{{service.student.parentJopAddress}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>هاتف العمل</p></div>
+                <div class="col-md-9"><p>{{service.student.parentJobPhone}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>أقارب الطالب</p></div>
+                <div class="col-md-9"><p>{{service.student.relativename}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>رقم هاتفه</p></div>
+                <div class="col-md-9"><p>{{service.student.relativePhone}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>اسم الأم</p></div>
+                <div class="col-md-9"><p>{{service.student.mothername}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>رقم هاتفها</p></div>
+                <div class="col-md-9"><p>{{service.student.motherPhone}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>هل ربة منزل؟</p></div>
+                <div class="col-md-9"><p>{{service.student.housewife}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>عنوان عمل الأم</p></div>
+                <div class="col-md-9"><p>{{service.student.motherJobAddress}}</p></div>
+                <!-- -------------------------------- -->
+                <div class="col-md-3"><p>عنوان الطالب</p></div>
+                <div class="col-md-9"><p>{{service.student.studentAddress}}</p></div>
+                <!-- -------------------------------- -->
+              
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    
+        <div class="py-4">
+            
+            
+        </div>
+    </div>
+    </div>
+    

@@ -1,0 +1,60 @@
+<div id="sticky-wrapper" class="sticky-wrapper" style="height: 115px;">
+  <nav class="navbar navbar-expand-lg">
+  <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;" class="navi">
+    <div style="width: 15%;text-align: center;">
+      <a class="navbar-brand" routerLink="">
+          <img src="./assets/images/3.png" style="width: 125px;padding-top: 10px;">
+      </a>
+    </div>
+      
+
+      <div  id="navbarNav" style="width: 70%;">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link click-scroll active" routerLink="" onclick="clickthis(this);">الرئيسية</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link click-scroll inactive" routerLink="aboutus" onclick="clickthis(this);">من نحن</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link click-scroll inactive" routerLink="activites" onclick="clickthis(this);">المسارات والأنشطة</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link click-scroll inactive" routerLink="register" onclick="clickthis(this);">تسجيل طالب جديد</a>
+              </li>
+
+              
+            <li class="nav-item">
+              <a class="nav-link click-scroll inactive" routerLink="fees" onclick="clickthis(this);">الرسوم</a>
+          </li>
+              <li class="nav-item dropdown">
+                  <a type="button"  class="dropdown-toggle nav-link dropdown-toggle dropdown-toggle inactive" (click)="isCollapsed = !isCollapsed"
+                  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" onclick="clickthis(this);">المراحل الدراسية</a>
+
+                  <ul class="collapse dropdown-menu dropdown-menu-light" [collapse]="isCollapsed" id="collapseBasic" [isAnimated]="true">
+                      <li class="text-center"><a class="dropdown-item" routerLink="stageone">مرحلة الروضة</a></li>
+                      <li class="text-center"><a class="dropdown-item" routerLink="stagetow">المرحلة الإبتدائية</a></li>
+                      <li class="text-center"><a class="dropdown-item" routerLink="stagethree">المرحلة المتوسطة</a></li>
+                      <li class="text-center"><a class="dropdown-item" routerLink="stagefour">المرحلة الثانوية</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link click-scroll inactive" routerLink="equipments" onclick="clickthis(this);">التجهيزات والمرافق</a>
+            </li>
+
+           
+          </ul>
+
+          
+      </div>
+
+      <div class="d-none d-lg-block" style="width: 15%;text-align: center;">
+        <a routerLink="login" class="navbar-icon bi-person smoothscroll sc_button_default">تسجيل الدخول</a>
+    </div>
+  </div>
+</nav></div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,51 @@
+
+<div style="background-color: #eee;">
+    <h1 id="hintst">لمحة عن المدرس:</h1>
+    <div class="container">
+        <div class="row p-4 rounded shadow-lg" id="studentProfile">
+            <div class="col-md-3">
+                <img [src]="'data:image/png;base64,'+service.teacher.hint" style="width: 100%;"/>
+                <hr>
+                <div class="my-3 text-center"><a routerLink="../students" class="btn btn-danger">قائمة الطلاب</a></div>
+            </div>
+            <div class="col-md-9">
+                <h3 class="mt-3 text-danger">اسم المدرس: {{service.teacher.fullname}}</h3>
+                <h3 class="mt-4 text-warning">البريد الإلكتروني : {{service.teacher.email}}</h3>
+                <h3 class="mt-4 text-success">الشهادات:</h3>
+                <div>
+                    <h5>
+                        <ul *ngFor="let item of service.teacher.certification">
+                                <li>{{item}}</li>
+                            
+                        </ul>
+                    </h5>
+                </div>
+                    
+                <h3 class="mt-4 text-primary">الخبرات:</h3>
+                <div>
+                    <h5>
+                        <ul *ngFor="let item of service.teacher.experiences">
+                                <li>{{item}}</li>
+                            
+                        </ul>
+                    </h5>
+                </div>
+                <h3 class="mt-4 text-info">المراحل الدراسية:</h3>
+                <div>
+                    <h5>
+                        <ul *ngFor="let item of service.teacher.stages">
+                                <li>{{item}}</li>
+                            
+                        </ul>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    
+        <div class="py-4">
+            
+            
+        </div>
+    </div>
+    </div>
+    

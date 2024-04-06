@@ -1,0 +1,53 @@
+<div style="background-color: #eee;">
+    <h1 id="hintst">تعديل علامات الطالب: {{fullname}}</h1>
+    <div class="container pb-5" style="position: relative;">
+
+
+        <div class="row p-4 rounded shadow-lg" id="studentProfile">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div  *ngIf="isError; then errorTemplate"></div>
+    <div  *ngIf="isGet; then formTemplate else successReg"></div>
+    <ng-template #errorTemplate>
+      <div><h3 class="text-center alert alert-danger">عذراً لم تنجح عملية التسجيل<br>الرجاء إعادة المحاولة</h3></div>
+      <script>window.scrollTo(top)</script>
+  </ng-template>
+  <ng-template #successReg>
+    <div><h1 class="text-center alert alert-success">تم تعديل علامات الطالب بنجاح</h1></div>
+</ng-template>
+  <ng-template #formTemplate>
+                <form ngForm="form" (submit)="submitMark()">
+                    <input type="hidden" name="id" value="{{userId}}" [(ngModel)]="service.mark.id" />
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">اللغة العربية</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" [(ngModel)]="service.mark.arabic" name="arabic" placeholder="{{service.mark.arabic}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">الرياضايات</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput2" [(ngModel)]="service.mark.math" name="math" placeholder="{{service.mark.math}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput3" class="form-label">التاريخ</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput3" [(ngModel)]="service.mark.history" name="history" placeholder="{{service.mark.history}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput4" class="form-label">الجغرافية</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput4" [(ngModel)]="service.mark.geographic" name="geographic" placeholder="{{service.mark.geographic}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput5" class="form-label">التربية الإسلامية</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput5" [(ngModel)]="service.mark.islamic" name="islamic" placeholder="{{service.mark.islamic}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput6" class="form-label">الفنون</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput6" [(ngModel)]="service.mark.arts" name="arts" placeholder="{{service.mark.arts}}">
+                      </div>
+                      <div class="mb-3">
+                        <input type="submit" class="form-control btn btn-success" value="تعديل">
+                      </div>
+                </form>
+            </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+<div class="login" style="padding: 25px;height: 100%;display: flex;align-items: center;justify-content: center;">
+    <div style="background-color: #fff;width: 35%;height: 75vh;border-radius: 10px;box-shadow: 0pc 3px 30px #c9c9c9;padding: 10px;">
+        <form ngForm="form" (submit)="submit()">
+            <div><h3 class="text-center text-primary p-3">اختر نوع الحساب</h3></div>
+            <div style="display: flex;justify-content: space-around;align-items: center;">
+                <div class="text-center"><label onclick="labelClick(this)" class="labellogin" for="teacher" style="cursor: pointer;border:1px solid #eee;width: 100px;height: 100px;background-image: url('../assets/images/teacher.jpg');background-size:contain;background-repeat: no-repeat;"></label><br><span>أستاذ</span><input name="usertype" [(ngModel)]="service.login.usertype" id="teacher" value="t" type="radio" style="display: none;"></div>
+                <div  class="text-center"><label onclick="labelClick(this)" class="labellogin" for="student" style="cursor: pointer;border:1px solid #eee;width: 100px;height: 100px;background-image: url('../assets/images/stu.jpg');background-size:contain;background-repeat: no-repeat;"></label><br><span>طالب</span><input name="usertype" [(ngModel)]="service.login.usertype" id="student" value="s" type="radio" style="display: none;"></div>
+            </div>
+            <div class="p-3"><h6 style="color: grey;text-align: center;">الرجاء ملء الحقول في الأسفل لتسجل الدخول</h6></div>
+            <div style="width: 75%;margin: 10px auto;"><input type="email" name="email"  [(ngModel)]="service.login.email" class="form-control" placeholder="الإيميل"/></div>
+            <div style="width: 75%;margin: 10px auto;"><input type="password" required name="password"  [(ngModel)]="service.login.password" class="form-control" placeholder="كلمة المرور"/></div>
+            <div style="width: 75%;margin: 10px auto;"><input type="submit" value="الدخول" class="btn btn-outline-primary"/></div>   
+            <div  *ngIf="isFailed; then errorTemplate else defTemp"></div>
+            <ng-template #defTemp>
+            <div style="width: 75%;margin: 10px auto;"><h6 class="text-warning text-center">مدرسة المستقبل الذهبي<br>Golden Future</h6></div>   
+            </ng-template>
+            <ng-template #errorTemplate>
+                <div style="width: 75%;margin: 10px auto;"><h6 class="text-danger text-center">{{this.message}}</h6></div>   
+            </ng-template>
+        </form>
+    </div>
+</div>
